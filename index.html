@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 11</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#0078d7] bg-opacity-10 bg-[url('https://4kwallpapers.com/images/wallpapers/windows-11-dark-mode-stock-official-3840x2400-5630.jpg')] bg-cover bg-center h-screen overflow-hidden flex flex-col">
+    
+    <main class="desktop">
+        
+        <div class="desktop-icons-left absolute top-4 left-4">
+            <div class="desktop-icon">
+                <div class="desktop-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                    </svg>
+                </div>
+                <span class="desktop-icon-label">Documentos</span>
+            </div>
+            
+            <div class="desktop-icon">
+                <div class="desktop-icon-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                    </svg>
+                </div>
+                <span class="desktop-icon-label">Este Computador</span>
+            </div>
+            
+            <div class="desktop-icon" ondblclick="openChromeWindow()">
+                <div class="desktop-icon-container">
+                    <img src="img/chrome.png" alt="Google Chrome" style="width: 24px; height: 24px;">
+                </div>
+                <span class="desktop-icon-label">Chrome</span>
+            </div>
+            
+            <div class="desktop-icon" ondblclick="openVSCodeWindow()">
+                <div class="desktop-icon-container">
+                    <img src="img/vscode.png" alt="VS Code" style="width: 24px; height: 24px;">
+                </div>
+                <span class="desktop-icon-label">VS Code</span>
+            </div>
+            
+            <div class="desktop-icon" ondblclick="openSpotifyWindow()">
+                <div class="desktop-icon-container">
+                    <img src="img/spotify.png" alt="Spotify" style="width: 24px; height: 24px;">
+                </div>
+                <span class="desktop-icon-label">Spotify</span>
+            </div>
+            
+            <div class="desktop-icon">
+                <div class="desktop-icon-container">
+                    <img src="img/lixeira.png" alt="Lixeira" style="width: 24px; height: 24px;">
+                </div>
+                <span class="desktop-icon-label">Lixeira</span>
+            </div>
+            
+            <div class="desktop-icon">
+                <div class="desktop-icon-container">
+                    <img src="img/pasta.png" alt="Pasta" style="width: 24px; height: 24px;">
+                </div>
+                <span class="desktop-icon-label">Pasta</span>
+            </div>
+        </div>
+        
+        
+        <div id="chrome-window" class="window-shadow absolute top-16 left-1/4 w-3/4 max-w-4xl bg-white rounded-lg overflow-hidden flex flex-col border border-gray-300 hidden" style="z-index: 100; height: 70vh;">
+            
+            <div class="bg-[#f3f3f3] px-3 py-2 flex justify-between items-center border-b border-gray-300 cursor-move" id="chrome-window-header">
+                <div class="flex items-center space-x-3">
+                    <img src="https://www.google.com/chrome/static/images/chrome-logo.svg" class="h-4 w-4" alt="Chrome">
+                    <span class="text-sm">Google Chrome</span>
+                </div>
+                <div class="flex space-x-5">
+                    <button class="text-gray-600 hover:bg-gray-200 rounded-md w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                        </svg>
+                    </button>
+                    <button class="text-gray-600 hover:bg-gray-200 rounded-md w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                        </svg>
+                    </button>
+                    <button onclick="closeWindow('chrome-window')" class="text-gray-600 hover:bg-red-500 hover:text-white rounded-md w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            
+            <div class="bg-[#f3f3f3] px-3 py-2 flex items-center border-b border-gray-300">
+                <div class="flex space-x-2 mr-2">
+                    <button class="text-gray-600 hover:bg-gray-200 rounded-full w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        </svg>
+                    </button>
+                    <button class="text-gray-600 hover:bg-gray-200 rounded-full w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                    <button class="text-gray-600 hover:bg-gray-200 rounded-full w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="flex-1 bg-white rounded-full px-4 py-1 text-sm flex items-center border border-gray-300">
+                    <span class="text-blue-600">https://www.google.com</span>
+                </div>
+                
+                <div class="flex space-x-2 ml-2">
+                    <button class="text-gray-600 hover:bg-gray-200 rounded-full w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+           
+            <div class="flex-1 bg-white overflow-auto">
+                <div class="w-full h-full flex flex-col items-center justify-center p-8">
+                    <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google" class="mb-6">
+                    <div class="w-full max-w-xl relative">
+                        <input type="text" id="chrome-search" class="w-full px-4 py-3 rounded-full border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Pesquisar no Google ou digitar um URL">
+                        <div class="absolute right-3 top-3 flex space-x-2">
+                            <button class="text-gray-500 hover:text-gray-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                                </svg>
+                            </button>
+                            <button class="text-blue-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mt-6 grid grid-cols-4 gap-4">
+                        <a href="#" class="flex flex-col items-center group">
+                            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-2 group-hover:bg-gray-200">
+                                <i class="fab fa-google text-blue-500"></i>
+                            </div>
+                            <span class="text-sm text-gray-700 group-hover:underline">Google</span>
+                        </a>
+                        <a href="#" class="flex flex-col items-center group">
+                            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-2 group-hover:bg-gray-200">
+                                <i class="fab fa-youtube text-red-500"></i>
+                            </div>
+                            <span class="text-sm text-gray-700 group-hover:underline">YouTube</span>
+                        </a>
+                        <a href="#" class="flex flex-col items-center group">
+                            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-2 group-hover:bg-gray-200">
+                                <i class="fab fa-github text-gray-800"></i>
+                            </div>
+                            <span class="text-sm text-gray-700 group-hover:underline">GitHub</span>
+                        </a>
+                        <a href="#" class="flex flex-col items-center group">
+                            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-2 group-hover:bg-gray-200">
+                                <i class="fab fa-twitter text-blue-400"></i>
+                            </div>
+                            <span class="text-sm text-gray-700 group-hover:underline">Twitter</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div id="vscode-window" class="window-shadow absolute top-16 left-1/4 w-3/4 max-w-5xl bg-[#1e1e1e] rounded-lg overflow-hidden flex flex-col border border-gray-700 hidden" style="z-index: 100; height: 70vh;">
+            
+            <div class="bg-[#3c3c3c] px-3 py-2 flex justify-between items-center border-b border-gray-700 cursor-move" id="vscode-window-header">
+                <div class="flex items-center space-x-3">
+                    <img src="https://code.visualstudio.com/assets/images/code-stable.png" class="h-4 w-4" alt="VS Code">
+                    <span class="text-sm text-gray-300">Visual Studio Code</span>
+                </div>
+                <div class="flex space-x-5">
+                    <button class="text-gray-400 hover:bg-gray-600 rounded-md w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                        </svg>
+                    </button>
+                    <button class="text-gray-400 hover:bg-gray-600 rounded-md w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                        </svg>
+                    </button>
+                    <button onclick="closeWindow('vscode-window')" class="text-gray-400 hover:bg-red-500 hover:text-white rounded-md w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+           
+            <div class="bg-[#252526] px-3 py-1 flex items-center space-x-4 border-b border-gray-700">
+                <button class="text-sm px-2 py-1 rounded text-gray-300 hover:bg-gray-700">
+                    Arquivo
+                </button>
+                <button class="text-sm px-2 py-1 rounded text-gray-300 hover:bg-gray-700">
+                    Editar
+                </button>
+                <button class="text-sm px-2 py-1 rounded text-gray-300 hover:bg-gray-700">
+                    Exibição
+                </button>
+                <button class="text-sm px-2 py-1 rounded text-gray-300 hover:bg-gray-700">
+                    Ir
+                </button>
+                <button class="text-sm px-2 py-1 rounded text-gray-300 hover:bg-gray-700">
+                    Executar
+                </button>
+                <button class="text-sm px-2 py-1 rounded text-gray-300 hover:bg-gray-700">
+                    Terminal
+                </button>
+                <button class="text-sm px-2 py-1 rounded text-gray-300 hover:bg-gray-700">
+                    Ajuda
+                </button>
+            </div>
+
+           
+            <div class="flex-1 flex overflow-hidden">
+                
+                <div class="w-12 bg-[#252526] flex flex-col items-center py-2 border-r border-gray-700">
+                    <button class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 rounded">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 rounded">
+                        <i class="fas fa-code-branch"></i>
+                    </button>
+                    <button class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 rounded">
+                        <i class="fas fa-bug"></i>
+                    </button>
+                    <button class="w-10 h-10 flex items-center justify-center text-blue-500 bg-gray-700 rounded">
+                        <i class="fas fa-file-code"></i>
+                    </button>
+                    <button class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 rounded">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+                
+                
+                <div class="w-64 bg-[#252526] border-r border-gray-700 flex flex-col">
+                    <div class="px-3 py-2 text-xs text-gray-400 uppercase tracking-wider">
+                        EXPLORADOR
+                    </div>
+                    <div class="flex-1 overflow-auto">
+                        <div class="text-sm text-gray-300">
+                            <div class="px-2 py-1 hover:bg-gray-700 cursor-pointer flex items-center">
+                                <i class="fas fa-chevron-right text-xs mr-2 text-gray-500"></i>
+                                <i class="fas fa-folder-open text-yellow-400 mr-2"></i>
+                                <span>meu-projeto</span>
+                            </div>
+                            <div class="pl-6">
+                                <div class="px-2 py-1 hover:bg-gray-700 cursor-pointer flex items-center">
+                                    <i class="fas fa-file-code text-blue-400 mr-2"></i>
+                                    <span>index.html</span>
+                                </div>
+                                <div class="px-2 py-1 hover:bg-gray-700 cursor-pointer flex items-center">
+                                    <i class="fas fa-file-code text-blue-400 mr-2"></i>
+                                    <span>style.css</span>
+                                </div>
+                                <div class="px-2 py-1 hover:bg-gray-700 cursor-pointer flex items-center">
+                                    <i class="fas fa-file-code text-blue-400 mr-2"></i>
+                                    <span>script.js</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+               
+                <div class="flex-1 flex flex-col overflow-hidden">
+                  
+                    <div class="bg-[#2d2d2d] flex border-b border-gray-700">
+                        <div class="tab active">
+                            <i class="fas fa-file-code text-blue-400 mr-2"></i>
+                            index.html
+                        </div>
+                        <div class="tab inactive">
+                            <i class="fas fa-file-code text-blue-400 mr-2"></i>
+                            style.css
+                        </div>
+                        <div class="tab inactive">
+                            <i class="fas fa-file-code text-blue-400 mr-2"></i>
+                            script.js
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="flex-1 overflow-auto code-editor p-4">
+                        <div class="line"><span class="text-gray-500">&lt;!DOCTYPE html&gt;</span></div>
+                        <div class="line"><span class="text-gray-500">&lt;html lang="pt-br"&gt;</span></div>
+                        <div class="line"><span class="text-gray-500">&lt;head&gt;</span></div>
+                        <div class="line pl-4"><span class="text-gray-500">&lt;meta charset="UTF-8"&gt;</span></div>
+                        <div class="line pl-4"><span class="text-gray-500">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></div>
+                        <div class="line pl-4"><span class="text-gray-500">&lt;title&gt;</span><span class="text-white">Meu Projeto</span><span class="text-gray-500">&lt;/title&gt;</span></div>
+                        <div class="line pl-4"><span class="text-gray-500">&lt;link rel="stylesheet" href="style.css"&gt;</span></div>
+                        <div class="line"><span class="text-gray-500">&lt;/head&gt;</span></div>
+                        <div class="line"><span class="text-gray-500">&lt;body&gt;</span></div>
+                        <div class="line pl-4"><span class="text-gray-500">&lt;div class="container"&gt;</span></div>
+                        <div class="line pl-8"><span class="text-gray-500">&lt;h1&gt;</span><span class="text-white">Olá, Mundo!</span><span class="text-gray-500">&lt;/h1&gt;</span></div>
+                        <div class="line pl-8"><span class="text-gray-500">&lt;p&gt;</span><span class="text-white">Este é um projeto de exemplo.</span><span class="text-gray-500">&lt;/p&gt;</span></div>
+                        <div class="line pl-4"><span class="text-gray-500">&lt;/div&gt;</span></div>
+                        <div class="line pl-4"><span class="text-gray-500">&lt;script src="script.js"&gt;&lt;/script&gt;</span></div>
+                        <div class="line"><span class="text-gray-500">&lt;/body&gt;</span></div>
+                        <div class="line"><span class="text-gray-500">&lt;/html&gt;</span></div>
+                    </div>
+                    
+                    
+                    <div class="h-32 bg-[#252526] border-t border-gray-700 flex flex-col">
+                        <div class="bg-[#2d2d2d] px-3 py-1 text-xs text-gray-400 flex items-center">
+                            <i class="fas fa-terminal mr-2"></i> TERMINAL
+                        </div>
+                        <div class="flex-1 p-2 overflow-auto text-sm text-gray-300 font-mono">
+                            <div>$ npm start</div>
+                            <div>> meu-projeto@1.0.0 start</div>
+                            <div>> webpack-dev-server --mode development</div>
+                            <div></div>
+                            <div class="text-green-400">ℹ ｢wds｣: Project is running at http://localhost:8080/</div>
+                            <div class="text-green-400">ℹ ｢wds｣: webpack output is served from /</div>
+                            <div class="text-green-400">ℹ ｢wds｣: Content not from webpack is served from ./public</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div id="spotify-window" class="window-shadow absolute top-16 left-1/4 w-3/4 max-w-4xl bg-[#121212] rounded-lg overflow-hidden flex flex-col border border-gray-800 hidden" style="z-index: 100; height: 70vh;">
+           
+            <div class="bg-[#121212] px-3 py-2 flex justify-between items-center border-b border-gray-800 cursor-move" id="spotify-window-header">
+                <div class="flex items-center space-x-3">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png" class="h-4 w-4" alt="Spotify">
+                    <span class="text-sm text-white">Spotify</span>
+                </div>
+                <div class="flex space-x-5">
+                    <button class="text-gray-400 hover:bg-gray-800 rounded-md w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                        </svg>
+                    </button>
+                    <button class="text-gray-400 hover:bg-gray-800 rounded-md w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                        </svg>
+                    </button>
+                    <button onclick="closeWindow('spotify-window')" class="text-gray-400 hover:bg-red-500 hover:text-white rounded-md w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+           
+            <div class="flex-1 flex overflow-hidden">
+                
+                <div class="w-64 bg-black bg-opacity-30 flex flex-col">
+                    <div class="p-6">
+                        <div class="text-white font-bold text-xl mb-6">Spotify</div>
+                        <div class="space-y-4">
+                            <div class="flex items-center text-white hover:text-green-500 cursor-pointer">
+                                <i class="fas fa-home mr-4"></i>
+                                <span>Início</span>
+                            </div>
+                            <div class="flex items-center text-gray-400 hover:text-white cursor-pointer">
+                                <i class="fas fa-search mr-4"></i>
+                                <span>Buscar</span>
+                            </div>
+                            <div class="flex items-center text-gray-400 hover:text-white cursor-pointer">
+                                <i class="fas fa-book mr-4"></i>
+                                <span>Sua Biblioteca</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="px-6 py-4 border-t border-gray-800">
+                        <div class="text-gray-400 text-sm mb-4">PLAYLISTS</div>
+                        <div class="space-y-3">
+                            <div class="text-gray-400 hover:text-white cursor-pointer text-sm">Minha Playlist #1</div>
+                            <div class="text-gray-400 hover:text-white cursor-pointer text-sm">Favoritas</div>
+                            <div class="text-gray-400 hover:text-white cursor-pointer text-sm">Para programar</div>
+                            <div class="text-gray-400 hover:text-white cursor-pointer text-sm">Relaxar</div>
+                        </div>
+                    </div>
+                </div>
+                
+              
+                <div class="flex-1 overflow-auto">
+                    <div class="p-6">
+                        <h1 class="text-white text-2xl font-bold mb-6">Boa tarde</h1>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+                            <div class="bg-gray-800 bg-opacity-40 hover:bg-gray-700 rounded p-4 cursor-pointer transition-all">
+                                <div class="relative mb-4">
+                                    <img src="https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228" class="w-full rounded shadow-lg">
+                                    <button class="absolute bottom-2 right-2 bg-green-500 rounded-full w-10 h-10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                                        <i class="fas fa-play text-black"></i>
+                                    </button>
+                                </div>
+                                <h3 class="text-white font-medium">This Is Daft Punk</h3>
+                                <p class="text-gray-400 text-sm mt-1">Os maiores hits de Daft Punk</p>
+                            </div>
+                            
+                            <div class="bg-gray-800 bg-opacity-40 hover:bg-gray-700 rounded p-4 cursor-pointer transition-all">
+                                <div class="relative mb-4">
+                                    <img src="https://i.scdn.co/image/ab67616d00001e02b7e6d8b1c654b376a6c3e1e2" class="w-full rounded shadow-lg">
+                                    <button class="absolute bottom-2 right-2 bg-green-500 rounded-full w-10 h-10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                                        <i class="fas fa-play text-black"></i>
+                                    </button>
+                                </div>
+                                <h3 class="text-white font-medium">Random Access Memories</h3>
+                                <p class="text-gray-400 text-sm mt-1">Daft Punk</p>
+                            </div>
+                            
+                            <div class="bg-gray-800 bg-opacity-40 hover:bg-gray-700 rounded p-4 cursor-pointer transition-all">
+                                <div class="relative mb-4">
+                                    <img src="https://i.scdn.co/image/ab67616d00001e02a991995542d50a691b9ae5be" class="w-full rounded shadow-lg">
+                                    <button class="absolute bottom-2 right-2 bg-green-500 rounded-full w-10 h-10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                                        <i class="fas fa-play text-black"></i>
+                                    </button>
+                                </div>
+                                <h3 class="text-white font-medium">Discovery</h3>
+                                <p class="text-gray-400 text-sm mt-1">Daft Punk</p>
+                            </div>
+                            
+                            <div class="bg-gray-800 bg-opacity-40 hover:bg-gray-700 rounded p-4 cursor-pointer transition-all">
+                                <div class="relative mb-4">
+                                    <img src="https://i.scdn.co/image/ab67616d00001e02e2d156fdc691f57900134342" class="w-full rounded shadow-lg">
+                                    <button class="absolute bottom-2 right-2 bg-green-500 rounded-full w-10 h-10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                                        <i class="fas fa-play text-black"></i>
+                                    </button>
+                                </div>
+                                <h3 class="text-white font-medium">Homework</h3>
+                                <p class="text-gray-400 text-sm mt-1">Daft Punk</p>
+                            </div>
+                        </div>
+                        
+                        <h2 class="text-white text-xl font-bold mb-4">Tocadas recentemente</h2>
+                        
+                        <div class="bg-gray-800 bg-opacity-40 rounded overflow-hidden">
+                            <table class="w-full text-gray-400">
+                                <thead>
+                                    <tr class="border-b border-gray-800 text-left text-sm">
+                                        <th class="p-4 w-12">#</th>
+                                        <th class="p-4">TÍTULO</th>
+                                        <th class="p-4">ÁLBUM</th>
+                                        <th class="p-4 text-right">DURAÇÃO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-gray-700 group">
+                                        <td class="p-4 text-center group-hover:text-green-500">1</td>
+                                        <td class="p-4">
+                                            <div class="flex items-center">
+                                                <img src="https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228" class="w-10 h-10 mr-3">
+                                                <div>
+                                                    <div class="text-white">Get Lucky</div>
+                                                    <div class="text-sm">Daft Punk, Pharrell Williams, Nile Rodgers</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="p-4">Random Access Memories</td>
+                                        <td class="p-4 text-right">6:09</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-700 group">
+                                        <td class="p-4 text-center group-hover:text-green-500">2</td>
+                                        <td class="p-4">
+                                            <div class="flex items-center">
+                                                <img src="https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228" class="w-10 h-10 mr-3">
+                                                <div>
+                                                    <div class="text-white">One More Time</div>
+                                                    <div class="text-sm">Daft Punk</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="p-4">Discovery</td>
+                                        <td class="p-4 text-right">5:20</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-700 group">
+                                        <td class="p-4 text-center group-hover:text-green-500">3</td>
+                                        <td class="p-4">
+                                            <div class="flex items-center">
+                                                <img src="https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228" class="w-10 h-10 mr-3">
+                                                <div>
+                                                    <div class="text-white">Harder, Better, Faster, Stronger</div>
+                                                    <div class="text-sm">Daft Punk</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="p-4">Discovery</td>
+                                        <td class="p-4 text-right">3:45</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+           
+            <div class="bg-[#181818] border-t border-gray-800 p-4 flex items-center">
+                <div class="w-1/4 flex items-center">
+                    <img src="https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228" class="w-14 h-14 mr-3">
+                    <div>
+                        <div class="text-white text-sm">Get Lucky</div>
+                        <div class="text-gray-400 text-xs">Daft Punk, Pharrell Williams, Nile Rodgers</div>
+                    </div>
+                    <button class="ml-4 text-gray-400 hover:text-white">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </div>
+                
+                <div class="w-2/4 flex flex-col items-center">
+                    <div class="flex items-center space-x-4 mb-2">
+                        <button class="text-gray-400 hover:text-white">
+                            <i class="fas fa-random"></i>
+                        </button>
+                        <button class="text-gray-400 hover:text-white">
+                            <i class="fas fa-step-backward"></i>
+                        </button>
+                        <button class="bg-white rounded-full w-8 h-8 flex items-center justify-center text-black hover:scale-105">
+                            <i class="fas fa-pause"></i>
+                        </button>
+                        <button class="text-gray-400 hover:text-white">
+                            <i class="fas fa-step-forward"></i>
+                        </button>
+                        <button class="text-gray-400 hover:text-white">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="w-full flex items-center space-x-2">
+                        <span class="text-gray-400 text-xs">2:45</span>
+                        <div class="flex-1 bg-gray-600 rounded-full h-1">
+                            <div class="bg-gray-200 h-1 rounded-full w-1/3"></div>
+                        </div>
+                        <span class="text-gray-400 text-xs">6:09</span>
+                    </div>
+                </div>
+                
+                <div class="w-1/4 flex items-center justify-end space-x-3">
+                    <button class="text-gray-400 hover:text-white">
+                        <i class="fas fa-list"></i>
+                    </button>
+                    <button class="text-gray-400 hover:text-white">
+                        <i class="fas fa-laptop"></i>
+                    </button>
+                    <button class="text-gray-400 hover:text-white">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                    <div class="w-24 bg-gray-600 rounded-full h-1">
+                        <div class="bg-gray-200 h-1 rounded-full w-3/4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+       
+        <div id="word-window" class="window-shadow absolute top-16 left-1/4 w-3/4 max-w-4xl bg-[#f3f3f3] rounded-lg overflow-hidden flex flex-col border border-gray-300 hidden" style="z-index: 100;">
+            
+            <div class="bg-[#e9e9e9] px-3 py-2 flex justify-between items-center border-b border-gray-300 cursor-move" id="word-window-header">
+                <div class="flex items-center space-x-3">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_Word_%282019%E2%80%93present%29.svg.png" class="h-4 w-4" alt="Word">
+                    <span class="text-sm">Documento.docx - Word</span>
+                </div>
+                <div class="flex space-x-5">
+                    <button class="text-gray-600 hover:bg-gray-200 rounded-md w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                        </svg>
+                    </button>
+                    <button class="text-gray-600 hover:bg-gray-200 rounded-md w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                        </svg>
+                    </button>
+                    <button onclick="closeWindow('word-window')" class="text-gray-600 hover:bg-red-500 hover:text-white rounded-md w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+           
+            <div class="bg-white px-3 py-1 flex items-center space-x-4 border-b border-gray-300">
+                <div class="flex space-x-2">
+                    <button onclick="saveDocument()" class="text-sm px-2 py-1 rounded hover:bg-gray-100 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Salvar
+                    </button>
+                    <button class="text-sm px-2 py-1 rounded hover:bg-gray-100 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                        Imprimir
+                    </button>
+                </div>
+                <div class="flex space-x-2">
+                    <button onclick="formatText('bold')" class="text-sm px-2 py-1 rounded hover:bg-gray-100 flex items-center font-bold">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        Negrito
+                    </button>
+                    <button onclick="formatText('italic')" class="text-sm px-2 py-1 rounded hover:bg-gray-100 flex items-center italic">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                        Itálico
+                    </button>
+                    <button onclick="formatText('underline')" class="text-sm px-2 py-1 rounded hover:bg-gray-100 flex items-center underline">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" />
+                        </svg>
+                        Sublinhado
+                    </button>
+                </div>
+            </div>
+
+           
+            <div class="flex-1 bg-white overflow-auto">
+                <div id="editor" contenteditable="true" class="w-full h-full p-4 text-gray-800 min-h-[300px]" style="font-family: 'Segoe UI', sans-serif; font-size: 12pt;">
+                    <p>Digite seu texto aqui...</p>
+                </div>
+            </div>
+
+           
+            <div class="bg-[#e9e9e9] px-3 py-1 text-xs text-gray-600 border-t border-gray-300">
+                <div class="flex justify-between">
+                    <span>Página 1</span>
+                    <span>Português (Brasil)</span>
+                </div>
+            </div>
+        </div>
+        
+      
+        <div id="explorer-window" class="window-shadow absolute top-16 left-1/4 w-3/4 max-w-4xl bg-[#f3f3f3] rounded-lg overflow-hidden flex flex-col border border-gray-300 hidden" style="z-index: 50;">
+           
+            <div class="bg-[#e9e9e9] px-3 py-2 flex justify-between items-center border-b border-gray-300 cursor-move" id="explorer-window-header">
+                <div class="flex items-center space-x-3">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Microsoft_Office_Outlook_%282018%E2%80%93present%29.svg/1200px-Microsoft_Office_Outlook_%282018%E2%80%93present%29.svg.png" class="h-4 w-4" alt="File Explorer">
+                    <span class="text-sm">Explorador de Arquivos</span>
+                </div>
+                <div class="flex space-x-5">
+                    <button class="text-gray-600 hover:bg-gray-200 rounded-md w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                        </svg>
+                    </button>
+                    <button class="text-gray-600 hover:bg-gray-200 rounded-md w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                        </svg>
+                    </button>
+                    <button onclick="closeWindow('explorer-window')" class="text-gray-600 hover:bg-red-500 hover:text-white rounded-md w-6 h-6 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+           
+            <div class="bg-white px-3 py-1 flex items-center space-x-4 border-b border-gray-300">
+                <button class="text-sm px-2 py-1 rounded hover:bg-gray-100 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Voltar
+                </button>
+                <button class="text-sm px-2 py-1 rounded hover:bg-gray-100 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                    </svg>
+                    Encaminhar
+                </button>
+                <div class="h-5 border-l border-gray-300"></div>
+                <button class="text-sm px-2 py-1 rounded hover:bg-gray-100 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                    </svg>
+                    Pesquisar
+                </button>
+            </div>
+
+           
+            <div class="bg-white px-3 py-1 flex items-center border-b border-gray-300">
+                <div class="flex-1 bg-gray-100 rounded-md px-3 py-1 text-sm flex items-center">
+                    <span class="text-blue-600">Este PC > Disco Local (C:) > Usuários</span>
+                </div>
+            </div>
+
+           
+            <div class="flex-1 flex bg-white">
+               
+                <div class="w-48 bg-white p-2 border-r border-gray-300">
+                    <div class="space-y-1">
+                        <div class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                            </svg>
+                            <span class="text-sm">Área de Trabalho</span>
+                        </div>
+                        <div class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                            </svg>
+                            <span class="text-sm">Downloads</span>
+                        </div>
+                        <div class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <span class="text-sm">Imagens</span>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="flex-1 p-4">
+                    <div class="grid grid-cols-6 gap-4">
+                       
+                        <div class="flex flex-col items-center p-2 rounded hover:bg-gray-100 cursor-pointer" onclick="openWindow('word-window')">
+                            <div class="w-16 h-16 bg-blue-100 rounded flex items-center justify-center mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            </div>
+                            <span class="text-xs text-center">Documento.docx</span>
+                        </div>
+                        <div class="flex flex-col items-center p-2 rounded hover:bg-gray-100 cursor-pointer">
+                            <div class="w-16 h-16 bg-green-100 rounded flex items-center justify-center mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <span class="text-xs text-center">Apresentação.pptx</span>
+                        </div>
+                        <div class="flex flex-col items-center p-2 rounded hover:bg-gray-100 cursor-pointer">
+                            <div class="w-16 h-16 bg-yellow-100 rounded flex items-center justify-center mb-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                                </svg>
+                            </div>
+                            <span class="text-xs text-center">Música.mp3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="bg-[#e9e9e9] px-3 py-1 text-xs text-gray-600 border-t border-gray-300">
+                <div class="flex justify-between">
+                    <span>3 itens</span>
+                    <span>127 GB livres de 475 GB</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+  
+    <footer class="bg-[#2d2d2d] bg-opacity-90 h-10 px-2 flex items-center justify-between fixed bottom-0 w-full">
+        
+        <div class="flex items-center space-x-2">
+           
+            <button class="start-button w-10 h-10 rounded-md flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    <path d="M12 7c-.55 0-1 .45-1 1v3H8c-.55 0-1 .45-1 1s.45 1 1 1h3v3c0 .55.45 1 1 1s1-.45 1-1v-3h3c.55 0 1-.45 1-1s-.45-1-1-1h-3V8c0-.55-.45-1-1-1z"/>
+                </svg>
+            </button>
+
+           
+            <div class="taskbar-icon w-10 h-10 rounded-md flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </div>
+            <div class="taskbar-icon w-10 h-10 rounded-md flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                </svg>
+            </div>
+            <div class="taskbar-icon w-10 h-10 rounded-md flex items-center justify-center bg-blue-500 bg-opacity-20">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                </svg>
+            </div>
+            <div class="taskbar-icon w-10 h-10 rounded-md flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                </svg>
+            </div>
+            
+            
+            <div id="chrome-taskbar-icon" class="taskbar-icon w-10 h-10 rounded-md flex items-center justify-center hidden" onclick="openChromeWindow()">
+                <img src="https://www.google.com/chrome/static/images/chrome-logo.svg" alt="Chrome" style="width: 20px; height: 20px;">
+            </div>
+            <div id="vscode-taskbar-icon" class="taskbar-icon w-10 h-10 rounded-md flex items-center justify-center hidden" onclick="openVSCodeWindow()">
+                <img src="https://code.visualstudio.com/assets/images/code-stable.png" alt="VS Code" style="width: 20px; height: 20px;">
+            </div>
+            <div id="spotify-taskbar-icon" class="taskbar-icon w-10 h-10 rounded-md flex items-center justify-center hidden" onclick="openSpotifyWindow()">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png" alt="Spotify" style="width: 20px; height: 20px;">
+            </div>
+        </div>
+
+        
+        <div class="flex items-center space-x-2">
+            <div id="current-time" class="text-xs text-white"></div>
+            <div class="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs">PT</div>
+        </div>
+    </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
